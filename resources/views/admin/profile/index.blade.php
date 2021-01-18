@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.profile')
 @section('title', '登録プロフィールの一覧')
 
 @section('content')
@@ -11,9 +11,9 @@
                 <a href="{{ action('Admin\ProfileController@add') }}" role="button" class="btn btn-primary">新規作成</a>
             </div>
             <div class="col-md-8">
-                <form action="{{ action('Admin\NewsController@index') }}" method="get">
+                <form action="{{ action('Admin\ProfileController@index') }}" method="get">
                     <div class="form-group row">
-                        <label class="col-md-2">ID</label>
+                        <label class="col-md-2">名前</label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="cond_title" value={{ $cond_title }}>
                         </div>
@@ -32,8 +32,10 @@
                         <thead>
                             <tr>
                                 <th width="10%">ID</th>
-                                <th width="20%">タイトル</th>
-                                <th width="50%">本文</th>
+                                <th width="10%">名前</th>
+                                <th width="10%">性別</th>
+                                <th width="20%">趣味</th>
+                                <th width="30%">自己紹介</th>
                                 <th width="10%">操作</th>
                             </tr>
                         </thead>
@@ -41,13 +43,10 @@
                             @foreach($posts as $news)
                                 <tr>
                                     <th>{{ $news->id }}</th>
-                                    <td>{{ Str::limit($news->title, 100) }}</td>
-                                    <td>{{ Str::limit($news->body, 250) }}</td>
-                                    <td>
-                                        <div>
-                                            <a href="{{ action('Admin\ProfileController@edit', ['id' => $news->id]) }}">編集</a>
-                                        </div>
-                                    </td>
+                                    <td>{{ Str::limit($news->name, 30) }}</td>
+                                    <td>{{ Str::limit($news->gender, 10) }}</td>
+                                    <td>{{ Str::limit($news->hobby, 100) }}</td>
+                                    <td>{{ Str::limit($news->introduction, 200) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
