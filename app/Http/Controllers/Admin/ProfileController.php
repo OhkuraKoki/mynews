@@ -61,4 +61,11 @@ class ProfileController extends Controller
         $profile->fill($profile_form)->save();
         return redirect('admin/profile/');
     }
+
+    public function delete(Request $request)
+  {
+      $Profile = Profile::find($request->id);
+      $Profile->delete();
+      return redirect('admin/profile/');
+  } 
 }
