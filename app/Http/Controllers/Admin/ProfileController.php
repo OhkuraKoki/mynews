@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\profile;
+use App\Models\Profile;
 
 class ProfileController extends Controller
 {
@@ -43,7 +43,7 @@ class ProfileController extends Controller
     }
 
 
-    public function edit(REquest $request)
+    public function edit(Request $request)
     {
         $profile =Profile::find($request->id);
         if (empty($profile)){
