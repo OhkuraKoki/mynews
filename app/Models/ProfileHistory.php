@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profileshistory extends Model
+class ProfileHistory extends Model
 {
     protected $guarded = array('id');
 
